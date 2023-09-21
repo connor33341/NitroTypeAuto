@@ -1,5 +1,8 @@
 {
     "Url":"https://www.nitrotype.com/race",
     "Driver":"",
-    "WPM":"80"
+    "WPM":"80",
+    "Human": true,
+    "Min":0.1,
+    "Max":0.5
 }
