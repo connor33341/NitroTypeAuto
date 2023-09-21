@@ -1,7 +1,8 @@
 # Updated: 9/20/23, Author: Connor
 import pyautogui
 import json
-from selenium import *
+import time
+from selenium import webdriver
 
 #Config
 JsonDir = "config.json"
@@ -10,13 +11,18 @@ with open(JsonDir, 'r') as file:
     Config = json.load(file)
 Url = Config["Url"]
 WebDriverDir = Config["Driver"]
-WPM = Config["WPM"]
+BinaryDir = Config["Location"]
+WPM = int(Config["WPM"])
 WPS = WPM/60
 
+#Browser Interface
+Options = webdriver.EdgeOptions()
+Options.binary_location=BinaryDir
+Browser = webdriver.Edge(options=Options)
 #Main
 def Run():
     print("Running")
-
+    time.sleep(4)
 #Loop
 while True:
     try: 
