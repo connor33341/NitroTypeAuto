@@ -22,6 +22,7 @@ SpaceChar = Config["Space"]
 TimeoutDelay = int(Config["Timeout"])
 StartDelay = int(Config["StartDelay"])
 KeyDelay = int(Config["KeyDelay"])
+LeftEnable = Config["LeftEnable"]
 
 #Browser Interface
 Options = webdriver.EdgeOptions()
@@ -104,10 +105,11 @@ def Run():
     print("Formatted: ",NewString)
     for Char in NewString:
         Upper = Char.upper()
-        pyautogui.typewrite(".")
-        pyautogui.leftClick()
+        if LeftEnable:
+            pyautogui.leftClick()
         if Upper == Char:
             pyautogui.hotkey("shift",Char.lower())
+            pyautogui.typewrite(".")
         else:
             pyautogui.typewrite(Char)
         if Char == " ":

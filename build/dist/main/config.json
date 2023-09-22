@@ -10,5 +10,6 @@
     "Delay": 20,
     "Timeout": 120,
     "StartDelay": 5,
-    "KeyDelay":0.01
+    "KeyDelay":0.001,
+    "LeftEnable":true
 }

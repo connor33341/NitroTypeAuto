@@ -1,0 +1,12 @@
+{
+    "Url": "https://www.nitrotype.com/race",
+    "Driver": "EdgeDriver.exe",
+    "Location": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "Space": "\\xa0",
+    "WPM": "80",
+    "Delay": 20,
+    "Timeout": 120,
+    "StartDelay": 5,
+    "KeyDelay":0.001,
+    "LeftEnable":false
+}
