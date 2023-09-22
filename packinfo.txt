@@ -1,0 +1,3 @@
+FROM: "D:/NitroTypeAuto";
+VERSION: 0;
+BUILD-TYPE: "";
