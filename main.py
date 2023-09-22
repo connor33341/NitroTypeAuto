@@ -45,9 +45,6 @@ def SetUp():
     Browser.get(Url)
 def Run():
     print("Running")
-    for Item in Browser.find_elements(By.TAG_NAME,"input"):
-        if Item.get_attribute("type") == "checkbox":
-            print("Capcha")
     if Exists(DashLetter) == False:
         Wait = WebDriverWait(Browser,TimeoutDelay)
         Wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,DashLetter)))
@@ -66,7 +63,6 @@ def Run():
         Wait = WebDriverWait(Browser,TimeoutDelay)
         Wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,Retracting)))
         time.sleep(StartDelay)
-    pyautogui.leftClick()
     for Word in Words:
         TextString = TextString+str(Word)
         '''
@@ -121,20 +117,20 @@ def Run():
         time.sleep(KeyDelay)
     #pyautogui.write(NewString,interval=KeyDelay)
     print("Finished")
-    Browser.execute("location.reload()")
+    Browser.execute_script("location.reload()")
     #Browser.close()
-   # Browser.close()
+    Browser.close()
 #Loop
 def MainLoop():
     while True:
         try: 
             print("Running at WPM of ",str(WPM))
-            SetUp()
-            #Run()
+            #SetUp()
+            Run()
             time.sleep(GameDelay)
         except Exception as Error:
             print("Error Occoured: ",Error)
             break
 SetUp()
-MainLoop()
-#Run()
+#MainLoop()
+Run()

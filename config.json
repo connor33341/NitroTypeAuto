@@ -9,6 +9,6 @@
     "Max": 0.5,
     "Delay": 20,
     "Timeout": 120,
-    "StartDelay": 3,
-    "KeyDelay":0.1
+    "StartDelay": 5,
+    "KeyDelay":0.01
 }
