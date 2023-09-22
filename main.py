@@ -28,6 +28,8 @@ Options = webdriver.EdgeOptions()
 Options.binary_location=BinaryDir
 Options.add_argument("start-maximized")
 Options.add_argument("disable-extensions")
+Options.add_argument("disable-notifications")
+Options.add_argument("disable-logging")
 Browser = webdriver.Edge(options=Options)
 #Element Names
 DashLetter = ".dash-letter"
@@ -43,6 +45,9 @@ def SetUp():
     Browser.get(Url)
 def Run():
     print("Running")
+    for Item in Browser.find_elements(By.TAG_NAME,"input"):
+        if Item.get_attribute("type") == "checkbox":
+            print("Capcha")
     if Exists(DashLetter) == False:
         Wait = WebDriverWait(Browser,TimeoutDelay)
         Wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,DashLetter)))
@@ -90,7 +95,12 @@ def Run():
                 if LowerChar == Char:
                     NewString = NewString + MapItem
                 else:
-                    NewString = NewString + MapItem.upper()
+                    #jif Char == ".":
+                        #NewString = NewString + "."
+                    #elif Char == ",":
+                        #NewString = NewString + ","
+                    #else:
+                        NewString = NewString + MapItem.upper()
         if Found == False:
             if Index != 0:
                 #print("a")
@@ -98,27 +108,33 @@ def Run():
     print("Formatted: ",NewString)
     for Char in NewString:
         Upper = Char.upper()
+        pyautogui.typewrite(".")
+        pyautogui.leftClick()
         if Upper == Char:
             pyautogui.hotkey("shift",Char.lower())
         else:
             pyautogui.typewrite(Char)
         if Char == " ":
             pyautogui.typewrite(" ")
+        elif Char == ">":
+            pyautogui.typewrite(".")
         time.sleep(KeyDelay)
     #pyautogui.write(NewString,interval=KeyDelay)
     print("Finished")
+    Browser.execute("location.reload()")
+    #Browser.close()
    # Browser.close()
-    time.sleep(GameDelay)
 #Loop
 def MainLoop():
     while True:
         try: 
             print("Running at WPM of ",str(WPM))
             SetUp()
-            Run()
+            #Run()
+            time.sleep(GameDelay)
         except Exception as Error:
             print("Error Occoured: ",Error)
             break
 SetUp()
-#MainLoop()
-Run()
+MainLoop()
+#Run()
