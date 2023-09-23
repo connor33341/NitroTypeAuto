@@ -2,3 +2,4 @@ Updated: 9/22/23
 
 Setup:
 Install the /build folder navigate to /build/dist/main and run main.exe
+Requirements: msedge installed
